@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Embedded NearPay checkout</title>
+    <!-- Pin the loader with the sha384 from dist/v1/integrity.json of the release you use. -->
+    <script src="https://js.nearpay.money/v1/nearpay.js" integrity="sha384-REPLACE_WITH_RELEASE_HASH" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="nearpay-checkout"></div>
+    <script>
+      // sessionId and clientSecret come from your server (POST /v1/checkout/sessions with
+      // ui_mode: "embedded" and allowed_origins including this page's origin).
+      const { sessionId, clientSecret } = window.CHECKOUT;
+      window.nearpayCheckout = NearPay("pk_test_REPLACE_ME").mountCheckout({
+        sessionId,
+        clientSecret,
+        element: "#nearpay-checkout",
+        appearance: { theme: "auto", accent: "#1f6feb", radius: 10 },
+        onComplete: ({ sessionId }) => {
+          // Confirm on your server (webhook payment_intent.succeeded) before fulfilling.
+          window.location.assign(`/thanks?session_id=${sessionId}`);
+        },
+        onError: (e) => console.warn("NearPay checkout:", e.code, e.message),
+      });
+    </script>
+  </body>
+</html>

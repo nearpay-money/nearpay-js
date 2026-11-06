@@ -1,0 +1,11 @@
+{
+  "name": "@nearpay/loader",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Builds js.<domain>/v1/nearpay.js (IIFE, global NearPay) from @nearpay/js; published with SRI hashes, never to npm.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "dependencies": {
+    "@nearpay/js": "workspace:*"
+  }
+}
