@@ -43,6 +43,10 @@ export interface CheckoutError {
 
 export interface CompleteResult {
   readonly sessionId: string;
+  /**
+   * `pi_…` of the session (`PublicCheckoutSession.payment_intent`, spec 0.1.5): known as soon as the
+   * session completes, also when the checkout only polled. `null` only from checkouts before spec 0.1.5.
+   */
   readonly paymentIntentId: string | null;
 }
 

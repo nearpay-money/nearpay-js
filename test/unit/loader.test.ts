@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { ClientSecretHeaders, idPattern } from "@nearpay/spec";
+import { ClientSecretHeaders, idPattern, PublicCheckoutSession } from "@nearpay/spec";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   CLIENT_SECRET_RE,
@@ -56,6 +56,20 @@ describe("protocol v1 catalogue", () => {
     const spec = ClientSecretHeaders.shape["x-nearpay-client-secret"];
     for (const s of [SECRET, `${SID}_secret_short`, "cs_x_secret_y"])
       expect(CLIENT_SECRET_RE.test(s)).toBe(spec.safeParse(s).success);
+  });
+
+  it("np:complete's payment_intent_id comes from a required pi_ id on the public session (spec 0.1.5)", () => {
+    const pi = PublicCheckoutSession.shape.payment_intent;
+    expect(pi.safeParse("pi_01jbz9k3m4n5p6q7r8s9t0v1w2").success).toBe(true);
+    expect(pi.safeParse(undefined).success).toBe(false);
+    expect(pi.safeParse(null).success).toBe(false);
+    const msg = parseParentMessage({
+      type: "np:complete",
+      v: 1,
+      session_id: SID,
+      payment_intent_id: "pi_01jbz9k3m4n5p6q7r8s9t0v1w2",
+    });
+    expect(msg).toEqual({ type: "np:complete", session_id: SID, payment_intent_id: "pi_01jbz9k3m4n5p6q7r8s9t0v1w2" });
   });
 
   it("parses iframe messages strictly", () => {
