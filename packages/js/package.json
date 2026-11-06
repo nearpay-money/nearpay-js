@@ -1,0 +1,20 @@
+{
+  "name": "@nearpay/js",
+  "version": "0.1.0",
+  "description": "Mount the NearPay embedded checkout (iframe + versioned postMessage protocol).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}

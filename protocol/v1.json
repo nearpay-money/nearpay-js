@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "toIframe": ["np:init"],
+  "toParent": ["np:ready", "np:resize", "np:complete", "np:error", "np:close"],
+  "iframe": {
+    "sandbox": "allow-scripts allow-same-origin allow-popups allow-forms",
+    "allow": "clipboard-write",
+    "path": "/embed/{session_id}#{client_secret}"
+  },
+  "initRetryMs": 250,
+  "initMaxTries": 40
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@nearpay/react",
+  "version": "0.1.0",
+  "description": "React component for the NearPay embedded checkout.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "react": ">=18.2.0"
+  },
+  "dependencies": {
+    "@nearpay/js": "workspace:*"
+  }
+}
