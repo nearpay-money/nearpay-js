@@ -1,5 +1,5 @@
 /**
- * @nearpay/js — mounts the NearPay embedded checkout (lld/checkout-and-js.md §6, ADR-0010).
+ * @nearpay-money/js — mounts the NearPay embedded checkout (lld/checkout-and-js.md §6, ADR-0010).
  *
  *   const np = NearPay("pk_test_…");
  *   const checkout = np.mountCheckout({ sessionId, clientSecret, element: "#pay", onComplete });

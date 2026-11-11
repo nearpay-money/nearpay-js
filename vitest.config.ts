@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  resolve: { alias: { "@nearpay/js": fileURLToPath(new URL("./packages/js/src/index.ts", import.meta.url)) } },
+  resolve: { alias: { "@nearpay-money/js": fileURLToPath(new URL("./packages/js/src/index.ts", import.meta.url)) } },
   esbuild: { jsx: "automatic" },
   test: {
     include: ["test/unit/**/*.test.{ts,tsx}"],

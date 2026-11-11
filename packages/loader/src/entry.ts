@@ -3,7 +3,7 @@
  * own host with `js.` replaced by `pay.` (so one build serves every deployment), else the build-time
  * default; an explicit `payOrigin` option always wins.
  */
-import { NearPay as create, type NearPayInstance, type NearPayOptions, payOriginFromScript } from "@nearpay/js";
+import { NearPay as create, type NearPayInstance, type NearPayOptions, payOriginFromScript } from "@nearpay-money/js";
 
 declare const __NP_DEFAULT_PAY_ORIGIN__: string;
 

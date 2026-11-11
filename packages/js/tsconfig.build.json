@@ -7,7 +7,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "types": [],
-    "paths": { "@nearpay/js": ["../js/dist/index.d.ts"] }
+    "paths": { "@nearpay-money/js": ["../js/dist/index.d.ts"] }
   },
   "include": ["src"]
 }

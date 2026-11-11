@@ -103,7 +103,7 @@ test("an explicit payOrigin wins over the derived one", async ({ page }) => {
   await expect(page.locator("#pay iframe")).toHaveAttribute("src", /^https:\/\/pay\.example\.com\/embed\//);
 });
 
-test("@nearpay/react mounts the checkout and reports completion", async ({ page }) => {
+test("@nearpay-money/react mounts the checkout and reports completion", async ({ page }) => {
   await page.goto(`${servers.merchantOrigin}/page/react`);
   await expect(page.locator("[data-nearpay-checkout] iframe")).toHaveAttribute(
     "src",

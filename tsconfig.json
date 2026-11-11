@@ -18,8 +18,8 @@
     "noEmit": true,
     "types": ["node"],
     "paths": {
-      "@nearpay/js": ["./packages/js/src/index.ts"],
-      "@nearpay/react": ["./packages/react/src/index.tsx"]
+      "@nearpay-money/js": ["./packages/js/src/index.ts"],
+      "@nearpay-money/react": ["./packages/react/src/index.tsx"]
     }
   },
   "include": ["packages/*/src", "test", "examples", "vitest.config.ts", "playwright.config.ts"]

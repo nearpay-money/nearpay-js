@@ -1,4 +1,4 @@
-import { NearPayCheckout, NearPayProvider } from "@nearpay/react";
+import { NearPayCheckout, NearPayProvider } from "@nearpay-money/react";
 
 /** sessionId / clientSecret come from your server (embedded checkout session). */
 export function Checkout({ sessionId, clientSecret }: { sessionId: string; clientSecret: string }) {
