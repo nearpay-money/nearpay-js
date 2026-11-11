@@ -1,8 +1,14 @@
 /**
- * @nearpay/react — `<NearPayCheckout sessionId clientSecret onComplete />` (lld/checkout-and-js.md §6).
+ * @nearpay-money/react — `<NearPayCheckout sessionId clientSecret onComplete />` (lld/checkout-and-js.md §6).
  * The publishable key comes from `<NearPayProvider publishableKey>` or the `publishableKey` prop.
  */
-import { type Appearance, type CheckoutError, type CompleteResult, NearPay, type NearPayInstance } from "@nearpay/js";
+import {
+  type Appearance,
+  type CheckoutError,
+  type CompleteResult,
+  NearPay,
+  type NearPayInstance,
+} from "@nearpay-money/js";
 import { createContext, type ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 
 const NearPayContext = createContext<NearPayInstance | null>(null);
@@ -69,4 +75,4 @@ export function NearPayCheckout(props: NearPayCheckoutProps) {
   return <div className={props.className} ref={el} data-nearpay-checkout="" />;
 }
 
-export type { Appearance, CheckoutError, CompleteResult } from "@nearpay/js";
+export type { Appearance, CheckoutError, CompleteResult } from "@nearpay-money/js";

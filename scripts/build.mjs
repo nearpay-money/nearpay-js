@@ -3,14 +3,14 @@
  * Builds nearpay-js:
  *   dist/v1/nearpay.js          loader (IIFE, global NearPay) served by nearpay-deploy's `js` site
  *   dist/v1/integrity.json      SRI hashes of the loader (publish with every release)
- *   packages/js/dist            @nearpay/js (ESM + .d.ts)
- *   packages/react/dist         @nearpay/react (ESM + .d.ts; react and @nearpay/js external)
+ *   packages/js/dist            @nearpay-money/js (ESM + .d.ts)
+ *   packages/react/dist         @nearpay-money/react (ESM + .d.ts; react and @nearpay-money/js external)
  * NP_PAY_ORIGIN sets the loader's fallback checkout origin (default https://pay.nearpay.money);
  * normally the loader derives it from its own js.<domain> URL.
  */
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { build } from "esbuild";
@@ -20,7 +20,7 @@ const payOrigin = process.env.NP_PAY_ORIGIN ?? "https://pay.nearpay.money";
 if (!/^https:\/\/[a-z0-9.-]+(:\d+)?$|^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(payOrigin)) {
   throw new Error(`NP_PAY_ORIGIN must be an https origin, got ${payOrigin}`);
 }
-const alias = { "@nearpay/js": join(root, "packages/js/src/index.ts") };
+const alias = { "@nearpay-money/js": join(root, "packages/js/src/index.ts") };
 
 rmSync(join(root, "dist"), { recursive: true, force: true });
 for (const p of ["js", "react"]) rmSync(join(root, "packages", p, "dist"), { recursive: true, force: true });
@@ -60,12 +60,15 @@ await build({
   format: "esm",
   target: "es2020",
   jsx: "automatic",
-  external: ["react", "react/jsx-runtime", "@nearpay/js"],
+  external: ["react", "react/jsx-runtime", "@nearpay-money/js"],
   legalComments: "none",
 });
 
-// Type declarations (react resolves @nearpay/js to the declarations emitted just before).
+// Type declarations (react resolves @nearpay-money/js to the declarations emitted just before).
 const tsc = join(root, "node_modules/.bin/tsc");
 for (const p of ["js", "react"])
   execFileSync(tsc, ["-p", join(root, "packages", p, "tsconfig.build.json")], { stdio: "inherit" });
-console.log(`built dist/v1/nearpay.js (${loader.length} bytes, ${sri("sha384")}), @nearpay/js, @nearpay/react`);
+for (const p of ["js", "react"]) cpSync(join(root, "LICENSE"), join(root, "packages", p, "LICENSE"));
+console.log(
+  `built dist/v1/nearpay.js (${loader.length} bytes, ${sri("sha384")}), @nearpay-money/js, @nearpay-money/react`,
+);

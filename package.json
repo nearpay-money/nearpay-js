@@ -1,8 +1,8 @@
 {
   "name": "nearpay-js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "NearPay widget loader (js.<domain>/v1/nearpay.js), @nearpay/js and @nearpay/react: mount the embedded checkout iframe and speak the versioned postMessage protocol.",
+  "description": "NearPay widget loader (js.<domain>/v1/nearpay.js), @nearpay-money/js and @nearpay-money/react: mount the embedded checkout iframe and speak the versioned postMessage protocol.",
   "license": "Apache-2.0",
   "type": "module",
   "packageManager": "pnpm@9.15.9",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.2",
-    "@nearpay/spec": "0.1.5",
+    "@nearpay-money/spec": "0.5.0",
     "@playwright/test": "1.64.1",
     "@types/node": "22.20.5",
     "@types/react": "19.1.17",

@@ -1,8 +1,28 @@
 {
-  "name": "@nearpay/react",
-  "version": "0.1.0",
-  "description": "React component for the NearPay embedded checkout.",
+  "name": "@nearpay-money/react",
+  "version": "0.2.0",
+  "description": "React components for the NearPay embedded checkout (NearPayProvider, NearPayCheckout).",
+  "keywords": [
+    "nearpay",
+    "payments",
+    "checkout",
+    "react",
+    "embedded-checkout",
+    "crypto",
+    "near-intents",
+    "stablecoin"
+  ],
+  "homepage": "https://docs.nearpay.money",
+  "bugs": {
+    "url": "https://github.com/nearpay-money/nearpay-js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nearpay-money/nearpay-js.git",
+    "directory": "packages/react"
+  },
   "license": "Apache-2.0",
+  "author": "NearPay <nearpaydotmoney@gmail.com> (https://nearpay.money)",
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -17,10 +37,14 @@
     "README.md",
     "LICENSE"
   ],
+  "dependencies": {
+    "@nearpay-money/js": "workspace:*"
+  },
   "peerDependencies": {
     "react": ">=18.2.0"
   },
-  "dependencies": {
-    "@nearpay/js": "workspace:*"
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

@@ -6,7 +6,7 @@
 |---|---|
 | Group | Frontends |
 | Kind | library + static |
-| Ships as | js.nearpay.money/v1/nearpay.js · npm: @nearpay/js, @nearpay/react |
+| Ships as | js.nearpay.money/v1/nearpay.js · npm: @nearpay-money/js, @nearpay-money/react |
 | Owns | Embed protocol |
 | Depends on (published artifacts only) | spec (public) |
 | First built in | Stage 1 (step 1.3) |
@@ -35,7 +35,7 @@ This repo stays surgical: design docs live in [`nearpay-brain`](../nearpay-brain
 ```
 
 React: `<NearPayProvider publishableKey="pk_…"><NearPayCheckout sessionId clientSecret onComplete /></NearPayProvider>`
-(or pass `publishableKey` to the component). npm users of `@nearpay/js` call `NearPay(pk, { payOrigin })`
+(or pass `publishableKey` to the component). npm users of `@nearpay-money/js` call `NearPay(pk, { payOrigin })`
 when the checkout is not `https://pay.nearpay.money`. The loader derives the checkout origin from its own
 URL (`js.<domain>` → `pay.<domain>`), so one build serves every deployment; `payOrigin` overrides it.
 
@@ -50,8 +50,8 @@ belongs to the session; it accepts only messages whose `event.origin` is the che
 pnpm build
 dist/v1/nearpay.js         loader (IIFE, global NearPay), served by nearpay-deploy's `js` site
 dist/v1/integrity.json     sha384 / sha512 SRI hashes of the loader (publish with every release)
-packages/js/dist/          @nearpay/js (ESM + d.ts)
-packages/react/dist/       @nearpay/react (ESM + d.ts)
+packages/js/dist/          @nearpay-money/js (ESM + d.ts)
+packages/react/dist/       @nearpay-money/react (ESM + d.ts)
 ```
 
 `NP_PAY_ORIGIN` sets the loader's fallback checkout origin when it is not served from a `js.` host
@@ -67,5 +67,5 @@ pnpm verify                 # typecheck + lint + coverage + build + e2e
 
 ## Built with
 
-TypeScript, esbuild, React (peer of `@nearpay/react`), Vitest, happy-dom, Playwright, Biome. Code and
+TypeScript, esbuild, React (peer of `@nearpay-money/react`), Vitest, happy-dom, Playwright, Biome. Code and
 documentation are written with AI assistance (Claude) under human direction and review.

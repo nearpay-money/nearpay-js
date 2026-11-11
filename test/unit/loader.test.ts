@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { ClientSecretHeaders, idPattern, PublicCheckoutSession } from "@nearpay/spec";
+import { ClientSecretHeaders, idPattern, PublicCheckoutSession } from "@nearpay-money/spec";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   CLIENT_SECRET_RE,
@@ -51,7 +51,7 @@ describe("protocol v1 catalogue", () => {
     expect([cat.initRetryMs, cat.initMaxTries]).toEqual([INIT_RETRY_MS, INIT_MAX_TRIES]);
   });
 
-  it("id and secret formats agree with @nearpay/spec", () => {
+  it("id and secret formats agree with @nearpay-money/spec", () => {
     expect(SESSION_ID_RE.source).toBe(idPattern("cs").source);
     const spec = ClientSecretHeaders.shape["x-nearpay-client-secret"];
     for (const s of [SECRET, `${SID}_secret_short`, "cs_x_secret_y"])

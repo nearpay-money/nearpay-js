@@ -70,7 +70,7 @@ export class Servers {
       format: "iife",
       jsx: "automatic",
       define: { "process.env.NODE_ENV": '"production"' },
-      alias: { "@nearpay/js": join(root, "packages/js/src/index.ts") },
+      alias: { "@nearpay-money/js": join(root, "packages/js/src/index.ts") },
       logLevel: "silent",
     });
     this.nearpay = createServer((req, res) => {
